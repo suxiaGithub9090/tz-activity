@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: inherit;
+}
+body,
+html {
+  height: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+::-webkit-input-placeholder {
+  font-size: inherit;
+  color: #a1a1a3;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: #fff;
+}
+/*超出部分省略*/
+.ell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: 100%;
+}

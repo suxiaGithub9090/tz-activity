@@ -15,8 +15,11 @@ function routerControl(to, from, next) {
     // 在M站打开
     const subName = name.substring(0, name.length - 2);
     const matched = testPcName && router.match({ name: subName }).matched.length;
-    // 计算出根元素的rem
-    if (matched) next({ name: subName });
+    if (matched) {
+      // 计算出根元素的rem
+      calcuRem();
+      next({ name: subName });
+    }
   }
   next();
 }

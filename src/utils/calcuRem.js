@@ -37,7 +37,7 @@ const recalc = () => {
   }
 };
 
-export default function calcuFontSize() {
+export default function calcuH5FontSize() {
   window.addEventListener(resizeEvt, recalc);
   window.addEventListener('pageshow', recalc);
   recalc();

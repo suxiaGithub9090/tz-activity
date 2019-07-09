@@ -1,3 +1,24 @@
+import ENVS, { OSS, ICON } from './env';
+
+const ENV = ENVS[process.env.VUE_APP_EXEC_ENV];
+const { STATIC } = ENV;
+const REQUEST_REG = /_REQ_([^_]+)_/;
+
+export function getRequestUrl(url = '') {
+  return url.replace(REQUEST_REG, (whole, domain) => ENV[domain]);
+}
+
+export function getImgFullPath(url = '') {
+  const prefix = url.includes('/udb/user/') ? STATIC : OSS;
+  if (/^https?:\/\//.test(url)) return url;
+  return prefix + url;
+}
+
+export function getIconUrl(name = '') {
+  if (!name) return name;
+  return `${ICON}${name}.svg`;
+}
+
 // 判断用户是否是在pc端打开页面
 export function isOpenInPc() {
   return !/(Android|iPhone|iPad|iPod|iOS|BlackBerry|webOs)/i.test(navigator.userAgent);

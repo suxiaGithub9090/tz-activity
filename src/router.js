@@ -8,17 +8,17 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/home',
+      path: '/m/home',
       name: 'home',
       component: () => import(/* webpackChunkName: "home" */ './pages/home'),
     },
     {
-      path: '/homePc',
+      path: '/p/home',
       name: 'homePc',
       component: () => import(/* webpackChunkName: "homePc" */ './pages/homePc'),
     },
     {
-      path: '/activity',
+      path: '/m/activity',
       name: 'activity',
       component: () => import(/* webpackChunkName: "activity" */ './pages/activity'),
     },

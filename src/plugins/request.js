@@ -1,12 +1,15 @@
 import Axois from 'axios';
 import qs from 'qs';
 import { getRequestUrl } from '@/utils';
+import { IS_PC } from '@/utils/config';
+
+const terminalType = IS_PC ? 4 : 5;
 
 const axios = Axois.create({
   timeout: 20000,
   headers: {
-    terminalType: 5,
-    token: '7777797967217505625',
+    terminalType,
+    token: '1914058306087615730',
   },
   paramsSerializer: params => qs.stringify(params),
 });
@@ -34,14 +37,18 @@ const dataTransform = {
 };
 request.post = (url, data, options = {}) => {
   const { headers = { 'Content-Type': contentTypeUrlencoded } } = options;
-  return axios.post(getRequestUrl(url), dataTransform[headers['Content-Type']](data), options);
+  return axios.post(
+    getRequestUrl(url),
+    dataTransform[headers['Content-Type']]({ ...data, terminalType }),
+    options,
+  );
 };
 
 /* eslint-disable implicit-arrow-linebreak */
 request.get = (url, data, options) =>
   axios.get(getRequestUrl(url), {
     ...options,
-    params: data,
+    params: { ...data, terminalType },
   });
 
 const install = Vue => {

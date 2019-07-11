@@ -1,6 +1,6 @@
 import router from '../router';
 import calcuRem from './calcuRem';
-import { isOpenInPc } from './index';
+import { IS_PC } from './config';
 import store from '@/store';
 import { SET_CALCUREM } from '@/store/types';
 
@@ -11,10 +11,10 @@ function routerControl(to, from, next) {
     groups: { platform, subPath },
   } = reg.exec(to.path) || { groups: {} };
   // 在pc端打开
-  if (isOpenInPc()) {
+  if (IS_PC) {
     const path = `/p/${subPath}`;
     const matched = platform !== 'p' && router.match({ path }).matched.length;
-    if (matched) next({ path: `/p/${subPath}` });
+    if (matched) next({ path });
   } else {
     // 在M站打开
     // 计算出根元素的rem

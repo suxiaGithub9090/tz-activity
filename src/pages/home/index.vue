@@ -1,17 +1,32 @@
 <template>
   <div class="wrapper">
-    <p>home</p>
+    <p>用户信息：{{ userInfo }}</p>
     <button @click="toAct">to activity</button>
   </div>
 </template>
 <script>
+import { bannerList, myInfo } from '@/api';
+
 export default {
   data() {
-    return {};
+    return {
+      userInfo: {},
+    };
+  },
+  created() {
+    // this.getBanner();
+    this.getUserInfo();
   },
   methods: {
     toAct() {
       this.$router.push({ name: 'activity' });
+    },
+    async getBanner() {
+      await this.$request(bannerList);
+    },
+    async getUserInfo() {
+      const res = await this.$request(myInfo, { onlyFree: 0 });
+      this.userInfo = res.data;
     },
   },
 };
@@ -22,6 +37,6 @@ export default {
   max-width: 10rem;
 }
 p {
-  font-size: 3rem;
+  font-size: 0.5rem;
 }
 </style>

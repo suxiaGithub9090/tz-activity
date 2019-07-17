@@ -2,6 +2,7 @@ import Axois from 'axios';
 import qs from 'qs';
 import { getRequestUrl } from '@/utils';
 import { IS_PC } from '@/utils/config';
+import store from '@/store';
 
 const terminalType = IS_PC ? 4 : 5;
 
@@ -9,7 +10,7 @@ const axios = Axois.create({
   timeout: 20000,
   headers: {
     terminalType,
-    token: '1914058306087615730',
+    token: store.getters.auth,
   },
   paramsSerializer: params => qs.stringify(params),
 });

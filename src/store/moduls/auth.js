@@ -2,10 +2,10 @@ import { writeCookie, readCookie } from '@/utils/storage';
 import { SET_LOGIN } from '../types';
 
 const TOKEN = 'token';
-const cookieExpirse = 7;
+const cookieExpirse = 7; // cookie有效期
 const authState = {
   token: (() => {
-    const cookieToken = readCookie(TOKEN); // pc token存在了cookie中 h5 通过query 传递
+    const cookieToken = readCookie(TOKEN); // pc token存在了cookie中 , h5 通过query 传递
     return cookieToken;
   })(),
 };

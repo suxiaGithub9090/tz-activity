@@ -5,7 +5,7 @@ const TOKEN = 'token';
 const cookieExpirse = 7;
 const authState = {
   token: (() => {
-    const cookieToken = readCookie(TOKEN); // pc token存在了cookie中
+    const cookieToken = readCookie(TOKEN); // pc token存在了cookie中 h5 通过query 传递
     return cookieToken;
   })(),
 };

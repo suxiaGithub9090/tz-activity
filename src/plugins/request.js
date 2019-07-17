@@ -10,12 +10,14 @@ const axios = Axois.create({
   timeout: 20000,
   headers: {
     terminalType,
-    token: store.getters.auth,
   },
   paramsSerializer: params => qs.stringify(params),
 });
 
-axios.interceptors.request.use(config => config, Promise.reject.bind(Promise));
+axios.interceptors.request.use(config => {
+  config.headers.token = store.getters.auth;
+  return config;
+}, Promise.reject.bind(Promise));
 
 axios.interceptors.response.use(res => {
   if (!res) return Promise.reject(new Error());

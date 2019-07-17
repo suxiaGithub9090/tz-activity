@@ -25,6 +25,7 @@ export default {
       await this.$request(bannerList);
     },
     async getUserInfo() {
+      console.log(this.$store.getters.auth);
       const res = await this.$request(myInfo, { onlyFree: 0 });
       this.userInfo = res.data;
     },

@@ -29,14 +29,14 @@ function routerControl(to, from, next) {
   next();
 }
 
+// 路由参数中携带token的处理
 function tokenControl(to) {
   const {
     query: { token },
   } = to;
-  if (token) {
-    store.commit(SET_LOGIN, token);
-  }
+  if (token) store.commit(SET_LOGIN, token);
 }
+
 router.beforeEach((to, from, next) => {
   // 路由携带token的处理
   tokenControl(to);

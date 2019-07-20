@@ -2,7 +2,7 @@ import router from '../router';
 import calcuRem from './calcuRem';
 import { IS_PC } from './config';
 import store from '@/store';
-import { SET_CALCUREM, SET_LOGIN } from '../store/types';
+import { SET_CALCUREM, SET_TOKEN } from '../store/types';
 
 const reg = /\/(?<platform>p|m)\/(?<subPath>\S+)/;
 
@@ -21,6 +21,7 @@ function routerControl(to, from, next) {
     if (!store.getters.calcuRem) {
       calcuRem();
       store.commit(SET_CALCUREM, true);
+      console.log(store.getters);
     }
     const path = `/m/${subPath}`;
     const matched = platform !== 'm' && router.match({ path }).matched.length;
@@ -34,7 +35,7 @@ function tokenControl(to) {
   const {
     query: { token },
   } = to;
-  if (token) store.commit(SET_LOGIN, token);
+  if (token) store.commit(SET_TOKEN, token);
 }
 
 router.beforeEach((to, from, next) => {

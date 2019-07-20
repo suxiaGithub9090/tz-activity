@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import localStore from './plugin/localStore';
+import localStore from './plugin/localStorage';
 import modules from './moduls';
 import getters from './getters';
 

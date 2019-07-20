@@ -1,5 +1,5 @@
 import { writeCookie, readCookie } from '@/utils/storage';
-import { SET_LOGIN } from '../types';
+import { SET_TOKEN } from '../types';
 
 const TOKEN = 'token';
 const cookieExpirse = 7; // cookie有效期
@@ -11,7 +11,7 @@ const authState = {
 };
 
 const mutations = {
-  [SET_LOGIN](state, token) {
+  [SET_TOKEN](state, token) {
     if (token) {
       state.token = token;
       writeCookie(TOKEN, token, cookieExpirse);

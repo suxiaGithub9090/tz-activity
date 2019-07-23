@@ -8,7 +8,6 @@ import localStorageMap from '../localStorageMap';
 function initLocalStorage(store) {
   Object.keys(localStorageMap).forEach(key => {
     const localVal = getStore(localStorageMap[key]);
-    console.log(key);
     if (localVal) store.commit(key, localVal);
   });
 }

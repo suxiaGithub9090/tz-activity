@@ -21,7 +21,6 @@ function routerControl(to, from, next) {
     if (!store.getters.calcuRem) {
       calcuRem();
       store.commit(SET_CALCUREM, true);
-      console.log(store.getters);
     }
     const path = `/m/${subPath}`;
     const matched = platform !== 'm' && router.match({ path }).matched.length;

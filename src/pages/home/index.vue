@@ -2,10 +2,12 @@
   <div class="wrapper">
     <p>用户信息：{{ userInfo }}</p>
     <button @click="toAct">to activity</button>
+    <button @click="setLocal">set localTest</button>
   </div>
 </template>
 <script>
 import { bannerList, myInfo } from '@/api';
+import { SET_LOCALTEST } from '@/store/types';
 
 export default {
   data() {
@@ -15,9 +17,12 @@ export default {
   },
   created() {
     // this.getBanner();
-    this.getUserInfo();
+    // this.getUserInfo();
   },
   methods: {
+    setLocal() {
+      this.$store.commit(SET_LOCALTEST, true);
+    },
     toAct() {
       this.$router.push({ name: 'activity' });
     },

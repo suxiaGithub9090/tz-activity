@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import localStore from './plugin/localStorage';
-import modules from './moduls';
+import createPersistedState from 'vuex-persistedstate';
+import modules from './modules';
 import getters from './getters';
 
 Vue.use(Vuex);
@@ -9,5 +9,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   getters,
   modules,
-  plugins: [localStore],
+  plugins: [
+    createPersistedState({
+      key: 'localStorage',
+      paths: ['localStorage'],
+    }),
+  ],
 });

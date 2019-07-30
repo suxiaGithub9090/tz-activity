@@ -1,5 +1,5 @@
 import common from './common';
+import localStorage from './localStorage';
 import auth from './auth';
-import localStorages from './localStorage';
 
-export default { common, auth, localStorages };
+export default { common, auth, localStorage };

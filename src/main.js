@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import plugins from './plugins'; // 自定义插件
 import './utils/routerControl'; // 路由控制
+import 'vant/lib/index.css';
 
 Vue.config.productionTip = false;
 

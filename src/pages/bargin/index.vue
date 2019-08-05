@@ -1,51 +1,45 @@
 <template>
   <div>
-    <el-row>
-      <el-col :span="12">
-        <div class="grid-content bg-purple"></div>
-      </el-col>
-      <el-col :span="12">
-        <div class="grid-content bg-purple-light"></div>
-      </el-col>
-    </el-row>
+    <van-row>
+      <van-col span="8">span: 8</van-col>
+      <van-col span="8">span: 8</van-col>
+      <van-col span="8">span: 8</van-col>
+    </van-row>
+    <div class="btn">
+      <button @click="toastTip">toast 轻提示</button>
+    </div>
+    <div class="btn">
+      <button @click="loadingTip">loading</button>
+    </div>
   </div>
 </template>
 <script>
-import { Row, Col } from 'element-ui';
+import { Row, Col } from 'vant';
 
 export default {
-  components: { ElRow: Row, ElCol: Col },
+  components: { VanRow: Row, VanCol: Col },
   data() {
     return {};
+  },
+  methods: {
+    toastTip() {
+      this.$toast('小仙女');
+    },
+    loadingTip() {
+      this.$loading();
+    },
   },
 };
 </script>
 
 <style lang="less" scoped>
-.el-row {
-  margin-bottom: 20px;
-  &:last-child {
-    margin-bottom: 0;
-  }
+.van-col {
+  background: #dddddd;
 }
-.el-col {
-  border-radius: 4px;
+button {
+  background: #8aa6df;
 }
-.bg-purple-dark {
-  background: #99a9bf;
-}
-.bg-purple {
-  background: #d3dce6;
-}
-.bg-purple-light {
-  background: #e5e9f2;
-}
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
-}
-.row-bg {
-  padding: 10px 0;
-  background-color: #f9fafc;
+.btn {
+  margin: 10px;
 }
 </style>

@@ -22,5 +22,10 @@ export default new Router({
       name: 'activity',
       component: () => import(/* webpackChunkName: "activity" */ './pages/activity'),
     },
+    {
+      path: '/p/bargin',
+      name: 'bargin',
+      component: () => import(/* webpackChunkName: "activity" */ './pages/bargin'),
+    },
   ],
 });

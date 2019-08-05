@@ -6,6 +6,14 @@ import { SET_CALCUREM, SET_TOKEN } from '../store/types';
 
 const reg = /\/(?<platform>p|m)\/(?<subPath>\S+)/;
 
+function calcuRemIsM() {
+  // 计算出根元素的rem
+  if (!store.getters.calcuRem) {
+    calcuRem();
+    store.commit(SET_CALCUREM, true);
+  }
+}
+
 function routerControl(to, from, next) {
   const {
     groups: { platform, subPath },
@@ -15,13 +23,10 @@ function routerControl(to, from, next) {
     const path = `/p/${subPath}`;
     const matched = platform !== 'p' && router.match({ path }).matched.length;
     if (matched) next({ path });
+    else if (platform === 'm') calcuRemIsM(); // 在pc上打开M站的页面
   } else {
     // 在M站打开
-    // 计算出根元素的rem
-    if (!store.getters.calcuRem) {
-      calcuRem();
-      store.commit(SET_CALCUREM, true);
-    }
+    calcuRemIsM();
     const path = `/m/${subPath}`;
     const matched = platform !== 'm' && router.match({ path }).matched.length;
     if (matched) next({ path });

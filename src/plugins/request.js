@@ -1,6 +1,5 @@
 import Axois from 'axios';
 import qs from 'qs';
-import { getRequestUrl } from '@/utils';
 import { IS_PC } from '@/utils/config';
 import store from '@/store';
 
@@ -41,7 +40,7 @@ const dataTransform = {
 request.post = (url, data, options = {}) => {
   const { headers = { 'Content-Type': contentTypeUrlencoded } } = options;
   return axios.post(
-    getRequestUrl(url),
+    url,
     dataTransform[headers['Content-Type']]({ ...data, terminalType }),
     options,
   );
@@ -49,7 +48,7 @@ request.post = (url, data, options = {}) => {
 
 /* eslint-disable implicit-arrow-linebreak */
 request.get = (url, data, options) =>
-  axios.get(getRequestUrl(url), {
+  axios.get(url, {
     ...options,
     params: { ...data, terminalType },
   });

@@ -1,12 +1,4 @@
-import ENVS, { OSS, ICON } from './env';
-
-const ENV = ENVS[process.env.VUE_APP_EXEC_ENV];
-const { STATIC } = ENV;
-const REQUEST_REG = /_REQ_([^_]+)_/;
-
-export function getRequestUrl(url = '') {
-  return url.replace(REQUEST_REG, (whole, domain) => ENV[domain]);
-}
+import { OSS, ICON, STATIC } from './env';
 
 export function getImgFullPath(url = '') {
   const prefix = url.includes('/udb/user/') ? STATIC : OSS;
